@@ -1,0 +1,19 @@
+// src/admin/layout/AdminHeader.module.scss
+.header {
+    height: 70px;
+    background-color: #0d1321;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    position: fixed;
+    left: 220px;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
