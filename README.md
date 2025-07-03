@@ -1,1 +1,0 @@
-# sports-event-frontend
