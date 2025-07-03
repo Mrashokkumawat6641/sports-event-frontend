@@ -68,7 +68,7 @@ const Register = () => {
 
   return (
     <div className="auth-screen">
-      <div className="top-title">Sikar Sports Leg 2025</div>
+      <div className="top-title">Sikar Sports League 2025</div>
 
       <div className="form-container">
         <h2 className="register-title">Register for Sports Event</h2>{" "}
