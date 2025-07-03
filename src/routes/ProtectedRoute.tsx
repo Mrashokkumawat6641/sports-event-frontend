@@ -1,18 +1,10 @@
 /** @format */
 
 import { Navigate } from "react-router-dom";
-import { useContext, createContext } from "react";
+import { useContext } from "react";
 import { JSX } from "react/jsx-runtime";
 import { parseJwt } from "../utils/jwt";
-
-interface User {
-  token?: string;
-}
-
-interface AuthContextType {
-  user?: User;
-}
-export const AuthContext = createContext<AuthContextType>({});
+import { AuthContext } from "../context/AuthContext";
 
 interface ProtectedRouteProps {
   children: JSX.Element;
@@ -20,7 +12,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute = ({ children, allowRoles }: ProtectedRouteProps) => {
-  const { user } = useContext(AuthContext);
+  const { user }: any = useContext(AuthContext);
   const token = user?.token || localStorage.getItem("token");
 
   if (!token) {
@@ -28,13 +20,17 @@ const ProtectedRoute = ({ children, allowRoles }: ProtectedRouteProps) => {
   }
 
   const payload = parseJwt(token);
-  if (!payload) {
-    return <Navigate to="/login" />;
+  if (process.env.NODE_ENV !== "production") {
+    console.log("JWT payload:", payload);
   }
 
-  if (allowRoles && !allowRoles.includes(payload.role)) {
-    // If user is not allowed, redirect to home
-    return <Navigate to="/" />;
+  if (allowRoles) {
+    if (!payload || !payload.role) {
+      return <Navigate to="/login" />;
+    }
+    if (!allowRoles.includes(payload.role)) {
+      return <Navigate to="/" />;
+    }
   }
 
   return children;
