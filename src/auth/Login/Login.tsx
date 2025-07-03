@@ -6,11 +6,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { loginUser } from "../../services/authService";
 import { Eye, EyeOff } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", mobile: "", password: "" });
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
 
@@ -21,13 +23,33 @@ const Login = () => {
       setError("Login email or mobile number");
       return;
     }
+    setLoading(true);
     try {
       const data = await loginUser(form);
+      console.log("Login API token:", data.token);
+      if (
+        typeof data.token !== "string" ||
+        data.token.split(".").length !== 3
+      ) {
+        setError("Invalid token received from server");
+        setLoading(false);
+        return;
+      }
       localStorage.setItem("token", data.token);
       setUser({ token: data.token });
       navigate("/");
+      window.location.reload();
     } catch (err: any) {
-      setError(err.message || "Login failed");
+      // Show API error message if available
+      if (err && err.message && err.message !== "Login failed") {
+        setError(err.message);
+      } else if (err && err.error) {
+        setError(err.error);
+      } else {
+        setError("Login failed");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -66,7 +88,9 @@ const Login = () => {
               {showPassword ? <EyeOff /> : <Eye />}
             </span>
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" disabled={loading}>
+            {loading ? <ClipLoader size={22} color="#fff" /> : "Login"}
+          </button>
           {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
         </form>
 

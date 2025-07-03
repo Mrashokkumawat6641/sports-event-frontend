@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../services/authService";
 import { Eye, EyeOff } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -19,6 +20,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
@@ -40,6 +42,7 @@ const Register = () => {
       setError("Please enter a valid email address");
       return;
     }
+    setLoading(true);
     try {
       await registerUser({
         name: form.name,
@@ -50,7 +53,16 @@ const Register = () => {
       });
       navigate("/login");
     } catch (err: any) {
-      setError(err.message || "Registration failed");
+      // Show API error message if available
+      if (err && err.message && err.message !== "Registration failed") {
+        setError(err.message);
+      } else if (err && err.error) {
+        setError(err.error);
+      } else {
+        setError("Registration failed");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,59 +97,6 @@ const Register = () => {
             }}
             onChange={(e) => setForm({ ...form, mobile: e.target.value })}
           />
-          {/* <div style={{ position: "relative" }}>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              required
-              minLength={6}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
-              style={{ paddingRight: 36 }}
-            />
-            <span
-              onClick={() => setShowPassword((v) => !v)}
-              style={{
-                position: "absolute",
-                right: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                cursor: "pointer",
-              }}
-            >
-              {showPassword ? (
-                <EyeOff size={20} />
-              ) : (
-                <Eye size={20} />
-              )}
-            </span>
-          </div>
-          <div style={{ position: "relative" }}>
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm Password"
-              required
-              onChange={(e) =>
-                setForm({ ...form, confirmPassword: e.target.value })
-              }
-              style={{ paddingRight: 36 }}
-            />
-            <span
-              onClick={() => setShowConfirmPassword((v) => !v)}
-              style={{
-                position: "absolute",
-                right: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                cursor: "pointer",
-              }}
-            >
-              {showConfirmPassword ? (
-                <EyeOff size={20} />
-              ) : (
-                <Eye size={20} />
-              )}
-            </span>
-          </div> */}
           <div className="input-wrapper">
             <input
               className="password-input"
@@ -172,7 +131,9 @@ const Register = () => {
               {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </span>
           </div>
-          <button type="submit">Register</button>
+          <button type="submit" disabled={loading}>
+            {loading ? <ClipLoader size={22} color="#fff" /> : "Register"}
+          </button>
           {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
         </form>
         <div style={{ marginTop: 12 }}>
