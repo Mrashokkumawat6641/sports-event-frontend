@@ -7,7 +7,14 @@ import styles from "./AdminSidebar.module.scss";
 const AdminSidebar = () => {
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.logo}>🏆 SportAdmin</div>
+      <div className={styles.logo}>
+        <img
+          src="https://www.svgrepo.com/show/303666/sports-logo.svg"
+          alt="SportAdmin Logo"
+          style={{ width: "32px", height: "32px", verticalAlign: "middle", marginRight: "8px" }}
+        />
+        SportAdmin
+      </div>
       <nav className={styles.nav}>
         <NavLink
           to="/admin/dashboard"
