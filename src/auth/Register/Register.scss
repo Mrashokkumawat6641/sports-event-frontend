@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap');
+
+.auth-screen {
+    height: 100vh;
+    background: url('https://img.freepik.com/premium-vector/sport-background-national-sports-day-celebration-concept-with-abstract-geometric-ornament_758894-2076.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 0;
+}
+
+.form-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+    min-width: 470px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: scale(1.02);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    align-items: center;
+}
+
+input,
+button {
+    padding: 18px 22px;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    transition: 0.3s ease;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+    border-color: #2563eb;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.input-wrapper {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+
+    .password-input {
+        width: 100%;
+        padding: 18px 22px;
+        padding-right: 0.0rem;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        &:focus {
+            border-color: #2563eb;
+            background: rgba(255, 255, 255, 0.15);
+        }
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 18px; // was 16px — adjust as per design
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #ccc;
+        z-index: 2;
+
+        &:hover {
+            color: #fff;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+
+button {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.6);
+    max-width: 500px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    box-shadow: 0 0 18px rgba(37, 99, 235, 0.9);
+}
+
+h1,
+h2 {
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+}
+
+.top-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    font-weight: 1000;
+    font-style: italic;
+    text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.register-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+@media (max-width: 540px) {
+    .form-container {
+        min-width: 90vw;
+        padding: 2rem 1.5rem;
+    }
+
+    input,
+    button {
+        font-size: 1rem;
+        padding: 14px 16px;
+    }
+
+    .password-input {
+        padding-right: 44px;
+    }
+
+    .password-toggle svg {
+        width: 18px;
+        height: 18px;
+    }
+}
