@@ -4,4 +4,4 @@
 
 // Export all required environment variables for frontend usage
 export const VITE_API =
-  process.env.REACT_APP_API || "http://localhost:5000/api";
+  process.env.REACT_APP_API || "https://organic-food-dt19.onrender.com/api";
