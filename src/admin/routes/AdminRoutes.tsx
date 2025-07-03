@@ -3,34 +3,24 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AdminLayoutWrapper from "../layout/AdminLayoutWrapper/AdminLayoutWrapper";
-// import Dashboard from "../pages/Dashboard";
-// import Players from "../pages/Players";
-// import Teams from "../pages/Teams";
-// import Events from "../pages/Events";
-import ProtectedRoute from "../../routes/ProtectedRoute"; 
+import Dashboard from "../dashboard/Dashboard";
+import Players from "../players/PlayerList/PlayerList";
+import Teams from "../teams/TeamList/TeamList";
+import Events from "../events/EventList/EventList";
 
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute>
-            <AdminLayoutWrapper children={undefined} />
-          </ProtectedRoute>
-        }
-      >
-        {/* Redirect to /admin/dashboard by default */}
+      <Route path="/" element={<AdminLayoutWrapper />}>
         <Route index element={<Navigate to="dashboard" />} />
-
-        {/* Admin pages */}
-        {/* <Route path="dashboard" element={<Dashboard />} /> */}
-        {/* <Route path="players" element={<Players />} /> */}
-        {/* <Route path="teams" element={<Teams />} /> */}
-        {/* <Route path="events" element={<Events />} /> */}
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="players" element={<Players />} />
+        <Route path="teams" element={<Teams />} />
+        <Route path="events" element={<Events />} />
       </Route>
     </Routes>
   );
 };
 
 export default AdminRoutes;
+  
