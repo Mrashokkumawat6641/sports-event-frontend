@@ -3,7 +3,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./AdminSidebar.module.scss";
-import { Home, Users, Shield, Calendar, LogOut, Search } from "lucide-react";
+import {
+  FaSearch,
+  FaHome,
+  FaUsers,
+  FaShieldAlt,
+  FaCalendarAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 const AdminSidebar = () => {
   return (
@@ -20,7 +27,7 @@ const AdminSidebar = () => {
         </div>
       </div>
       <div className={styles.searchBox}>
-        <Search size={18} />
+        <FaSearch size={18} />
         <input type="text" placeholder="Search" />
       </div>
       <nav className={styles.nav}>
@@ -29,36 +36,28 @@ const AdminSidebar = () => {
           className={({ isActive }) => (isActive ? styles.active : "")}
         >
           {" "}
-          <Home size={20} /> Dashboard{" "}
+          <FaHome size={20} /> Dashboard{" "}
         </NavLink>
         <NavLink
           to="/admin/players"
           className={({ isActive }) => (isActive ? styles.active : "")}
         >
           {" "}
-          <Users size={20} /> Players{" "}
+          <FaUsers size={20} /> Players{" "}
         </NavLink>
         <NavLink
           to="/admin/teams"
           className={({ isActive }) => (isActive ? styles.active : "")}
         >
           {" "}
-          <Shield size={20} /> Teams{" "}
+          <FaShieldAlt size={20} /> Teams{" "}
         </NavLink>
         <NavLink
           to="/admin/events"
           className={({ isActive }) => (isActive ? styles.active : "")}
         >
           {" "}
-          <Calendar size={20} /> Events{" "}
-        </NavLink>
-
-        <NavLink
-          to="/admin/events"
-          className={({ isActive }) => (isActive ? styles.active : "")}
-        >
-          {" "}
-          <Calendar size={20} /> Results{" "}
+          <FaCalendarAlt size={20} /> Events{" "}
         </NavLink>
 
         <NavLink
@@ -66,11 +65,19 @@ const AdminSidebar = () => {
           className={({ isActive }) => (isActive ? styles.active : "")}
         >
           {" "}
-          <Calendar size={20} /> Media{" "}
+          <FaCalendarAlt size={20} /> Results{" "}
+        </NavLink>
+
+        <NavLink
+          to="/admin/events"
+          className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+          {" "}
+          <FaCalendarAlt size={20} /> Media{" "}
         </NavLink>
         <NavLink to="/admin/logout">
           {" "}
-          <LogOut size={20} /> Logout{" "}
+          <FaSignOutAlt size={20} /> Logout{" "}
         </NavLink>
       </nav>
     </aside>
