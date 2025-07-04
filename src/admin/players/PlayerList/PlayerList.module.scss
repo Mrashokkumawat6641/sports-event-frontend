@@ -1,11 +1,96 @@
-.playerListPage {
-    padding: 32px;
+.playerListWrapper {
+    width: 100%;
+    padding: 2.5rem;
+
+    @media (max-width: 1024px) {
+        padding: 1.2rem 0.5rem;
+    }
+
+    @media (max-width: 700px) {
+        padding: 0.5rem 0.2rem;
+    }
+}
+
+.card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
+    padding: 2rem 1.5rem;
+
+    h2 {
+        font-size: 1.3rem;
+        color: #222;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+
+        @media (max-width: 700px) {
+            font-size: 1.05rem;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        padding: 1.2rem 0.7rem;
+    }
+}
+
+.tablePlaceholder {
+    color: #888;
+    font-size: 1.1rem;
+    padding: 2rem 0;
     text-align: center;
-    font-size: 32px;
-    color: #fff;
-    background: #23272f;
-    border-radius: 12px;
-    margin: 40px auto;
-    max-width: 600px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 700px) {
+        font-size: 0.95rem;
+        padding: 1rem 0;
+    }
+}
+
+.playerList {
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+    margin-top: 2rem;
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 1.2rem;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.table th,
+.table td {
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-size: 1.05rem;
+}
+
+.table th {
+    color: #888;
+    font-weight: 600;
+    background: #f7f8fa;
+}
+
+.table tr {
+    border-bottom: 1px solid #ececec;
+}
+
+.table tr:last-child {
+    border-bottom: none;
+}
+
+.table td {
+    color: #222;
 }
