@@ -3,7 +3,15 @@
 import React from "react";
 import styles from "./AdminHeader.module.scss";
 
-const AdminHeader = () => {
+const AdminHeader = ({
+  isMobile,
+  sidebarOpen,
+  setSidebarOpen,
+}: {
+  isMobile?: boolean;
+  sidebarOpen?: boolean;
+  setSidebarOpen?: (v: boolean) => void;
+}) => {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
