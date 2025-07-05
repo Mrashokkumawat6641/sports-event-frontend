@@ -1,120 +1,38 @@
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    padding: 2.5rem 2.5rem 0 2.5rem;
-}
-
-.dashboardPage {
-    padding: 32px;
-    text-align: center;
-    font-size: 32px;
-    color: #fff;
-    background: #23272f;
-    border-radius: 12px;
-    margin: 40px auto;
-    max-width: 600px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-}
-
-.balanceCard {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
-    padding: 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    max-width: 400px;
-}
-
-.balanceTitle {
-    font-size: 1.1rem;
-    color: #888;
-    font-weight: 500;
-}
-
-.balanceAmount {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #222;
-}
-
-.balanceChange {
-    font-size: 1rem;
-    color: #22c55e;
-    font-weight: 500;
-}
-
-.spendActivityCard {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
-    padding: 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    max-width: 400px;
-}
-
-.spendTitle {
-    font-size: 1.1rem;
-    color: #888;
-    font-weight: 500;
-}
-
-.spendGraph {
-    height: 80px;
-    background: #f3f4f6;
-    border-radius: 10px;
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #bbb;
-    font-size: 1rem;
-}
-
-.cardsRow {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.card {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
-    padding: 1.5rem 2rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
-
-.cardTitle {
-    font-size: 1.05rem;
-    color: #888;
-    font-weight: 500;
-}
-
-.cardValue {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #222;
-}
-
 .dashboardWrapper {
     width: 100%;
-    padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+    padding: 2.5rem 2.5rem -0.5rem 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 2.2rem;
+
+    @media (max-width: 1024px) {
+        padding: 2rem -0.5rem;
+        gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+        padding: 1rem 0.7rem;
+    }
 }
 
 .statsRow {
     display: flex;
     gap: 1.5rem;
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
 }
 
 .statCard {
@@ -122,7 +40,7 @@
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
-    padding: 1.5rem 1.2rem;
+    padding: 1.5rem -0.8rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -130,11 +48,78 @@
     min-width: 160px;
     min-height: 110px;
 
+
+    @media (max-width: 973px) and (min-width: 869px) {
+        flex: 1;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-width: 80px;
+        min-height: 50px;
+    }
+
+    @media (max-width: 868px) and (min-width: 800px) {
+        flex: 1;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-width: 80px;
+        min-height: 50px;
+    }
+
+    @media (max-width: 826px) {
+        flex: 1;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        padding: 1.5rem -0.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-width: 80px;
+        min-height: 50px;
+    }
+
     h3 {
         font-size: 1.1rem;
         color: #888;
         font-weight: 500;
         margin-bottom: 0.5rem;
+
+
+        @media (max-width: 868px) {
+            font-size: 0.6rem;
+            padding-left: 45px;
+        }
+
+        @media (max-width: 826px) {
+            font-size: 0.5rem;
+            padding-left: 45px;
+        }
+
+        @media (max-width: 868px) and (min-width: 800px) {
+            font-size: 0.6rem;
+            padding-left: 45px;
+        }
+
+        @media (max-width: 629px) {
+            padding-left: 11px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 1rem;
+        }
     }
 
     p {
@@ -142,12 +127,43 @@
         color: #222;
         font-weight: 700;
         margin: 0;
+
+        @media (max-width: 480px) {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 868px) {
+            font-size: 1.2rem;
+            padding-left: 45px;
+        }
+
+        @media (max-width: 733px) {
+            font-size: 1.1rem;
+            padding-left: 31px;
+        }
+
+        @media (max-width: 691px) {
+            font-size: 15px;
+            padding-left: 31px;
+            padding-bottom: 9px;
+        }
+
+        @media (max-width: 629px) {
+            font-size: 15px;
+            padding-left: 13px;
+            padding-bottom: 9px;
+        }
     }
 }
 
 .sectionsRow {
     display: flex;
     gap: 1.5rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 .sectionLeft,
@@ -163,6 +179,10 @@
         color: #888;
         font-weight: 500;
         margin-bottom: 0.7rem;
+
+        @media (max-width: 480px) {
+            font-size: 1rem;
+        }
     }
 
     ul {
@@ -174,46 +194,47 @@
             font-size: 1.08rem;
             color: #222;
             margin-bottom: 0.5rem;
+
+            @media (max-width: 480px) {
+                font-size: 1rem;
+            }
         }
     }
 }
 
-@media (max-width: 1024px) {
-    .dashboardWrapper {
-        padding: 1.2rem 0.5rem;
-        gap: 1.2rem;
-    }
+/* Optional Reusable Cards (if used elsewhere) */
+.card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+    padding: 1.5rem 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
 
-    .statsRow,
-    .sectionsRow {
-        flex-direction: column;
-        gap: 1.2rem;
+    @media (max-width: 480px) {
+        padding: 1rem 1.2rem;
     }
 }
 
-@media (max-width: 700px) {
-    .dashboardWrapper {
-        padding: 0.5rem 0.2rem;
-        gap: 0.7rem;
-    }
+.cardTitle {
+    font-size: 1.05rem;
+    color: #888;
+    font-weight: 500;
 
-    .statCard,
-    .sectionLeft,
-    .sectionRight {
-        padding: 1rem 0.5rem;
-        min-width: unset;
-        min-height: unset;
+    @media (max-width: 480px) {
+        font-size: 0.95rem;
     }
+}
 
-    .statCard h3,
-    .sectionLeft h4,
-    .sectionRight h4 {
-        font-size: 1rem;
-    }
+.cardValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
 
-    .statCard p,
-    .sectionLeft li,
-    .sectionRight li {
-        font-size: 1.1rem;
+    @media (max-width: 480px) {
+        font-size: 1.3rem;
     }
 }

@@ -5,18 +5,40 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0rem -0.2rem 0rem 2.5rem;
+    padding: 0 2rem 0 -0.5rem;
     box-shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
     border-radius: 0 0 24px 24px;
     position: sticky;
     top: 0;
     z-index: 99;
+
+    @media (max-width: 1024px) {
+        padding: 0 1.5rem 0 -0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 0 1.5rem 0 -0.5rem;
+        height: 70px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+        padding: -1rem 0.3rem;
+    }
 }
 
 .left {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
 }
 
 .title {
@@ -24,123 +46,96 @@
     color: #222;
     font-weight: 700;
     margin-bottom: 0.1rem;
+
+    @media (max-width: 1922px) and (min-width: 769px) {
+        font-size: 1.3rem;
+        margin-left: 8px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1.3rem;
+        margin-left: 8px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1.2rem;
+        margin-left: 8px;
+
+    }
 }
 
 .date {
     font-size: 1rem;
     color: #888;
     font-weight: 400;
+    margin-bottom: 21px;
+    margin-left: 8px;
+
+    @media (max-width: 768px) {
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.9rem;
+    }
 }
 
 .right {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+
+    @media (max-width: 768px) {
+        align-self: flex-end;
+    }
 }
 
 .profile {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-}
 
-.profile img {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 2px solid #e0e0e0;
-    background: #fff;
+    img {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 2px solid #e0e0e0;
+        background: #fff;
+
+        @media (max-width: 480px) {
+            width: 40px;
+            height: 40px;
+        }
+    }
 }
 
 .profileInfo {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-    margin-right: 5rem;
+
+    @media (max-width: 480px) {
+        gap: 0;
+    }
 }
 
 .profileName {
     font-size: 1.08rem;
     font-weight: 600;
     color: #222;
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+    }
 }
 
 .profileEmail {
     font-size: 0.95rem;
     color: #888;
-}
 
-@media (max-width: 1024px) {
-    .header {
-        padding: 0 1rem;
-        height: 64px;
-    }
-
-    .title {
-        font-size: 1.1rem;
-    }
-
-    .profile img {
-        width: 36px;
-        height: 36px;
-    }
-}
-
-@media (max-width: 778px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-        padding: 0.7rem 0.7rem;
-        gap: 0.5rem;
-        border-radius: 0 0 12px 12px;
-    }
-
-    .left,
-    .right {
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .profile {
-        flex-direction: column;
-        gap: 0.2rem;
-    }
-
-    .profileInfo {
-        margin-right: 0;
-        align-items: center;
-    }
-
-    .title {
-        font-size: 1.2rem;
-        margin-bottom: 0.1rem;
-    }
-
-    .date {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 700px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-        padding: 0.7rem 0.7rem;
-        gap: 0.5rem;
-    }
-
-    .left,
-    .right {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    .profileInfo {
-        display: none;
+    @media (max-width: 480px) {
+        font-size: 0.88rem;
     }
 }
