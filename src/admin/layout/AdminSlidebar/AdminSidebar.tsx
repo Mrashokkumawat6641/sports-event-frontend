@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./AdminSidebar.module.scss";
 import {
@@ -12,6 +12,7 @@ import {
   FaSignOutAlt,
   FaBars,
   FaTimes,
+  FaImage,
 } from "react-icons/fa";
 
 const AdminSidebar = ({
@@ -23,6 +24,24 @@ const AdminSidebar = ({
   setOpen: (v: boolean) => void;
   isMobile?: boolean;
 }) => {
+  const [search, setSearch] = useState("");
+  const navItems = [
+    { label: "Dashboard", to: "/admin/dashboard", icon: <FaHome size={20} /> },
+    { label: "Players", to: "/admin/players", icon: <FaUsers size={20} /> },
+    { label: "Teams", to: "/admin/teams", icon: <FaShieldAlt size={20} /> },
+    { label: "Events", to: "/admin/events", icon: <FaCalendarAlt size={20} /> },
+    {
+      label: "Results",
+      to: "/admin/ScoreList",
+      icon: <FaSearch size={20} />, // Unique icon for Results
+    },
+    { label: "Gallery", to: "/admin/gallery", icon: <FaImage size={20} /> },
+    { label: "Logout", to: "/admin/logout", icon: <FaSignOutAlt size={20} /> },
+  ];
+  const filteredNav = navItems.filter((item) =>
+    item.label.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <aside
       className={`${styles.sidebar} ${open ? styles.open : styles.closed} ${
@@ -117,60 +136,29 @@ const AdminSidebar = ({
               alt="User"
               className={styles.userAvatar}
             />
-            <div>
-              <div className={styles.userName}>Sports Event</div>
-              <div className={styles.userEmail}>Sports@Event.in</div>
-            </div>
           </div>
           <div className={styles.searchBox}>
             <FaSearch size={18} />
-            <input type="text" placeholder="Search" />
+            <input
+              type="text"
+              placeholder="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
           <nav className={styles.nav}>
-            <NavLink
-              to="/admin/dashboard"
-              className={({ isActive }) =>
-                `${styles.link} ${isActive ? styles.active : ""}`
-              }
-            >
-              <span className={styles.icon}>
-                <FaHome size={20} />
-              </span>
-              <span className={styles.text}>Dashboard</span>
-            </NavLink>
-            <NavLink
-              to="/admin/players"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaUsers size={20} /> Players
-            </NavLink>
-            <NavLink
-              to="/admin/teams"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaShieldAlt size={20} /> Teams
-            </NavLink>
-            <NavLink
-              to="/admin/events"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaCalendarAlt size={20} /> Events
-            </NavLink>
-            <NavLink
-              to="/admin/events"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaCalendarAlt size={20} /> Results
-            </NavLink>
-            <NavLink
-              to="/admin/events"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaCalendarAlt size={20} /> Media
-            </NavLink>
-            <NavLink to="/admin/logout">
-              <FaSignOutAlt size={20} /> Logout
-            </NavLink>
+            {filteredNav.map((item) => (
+              <NavLink
+                key={item.label}
+                to={item.to}
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? styles.active : ""}`
+                }
+              >
+                <span className={styles.icon}>{item.icon}</span>
+                <span className={styles.text}>{item.label}</span>
+              </NavLink>
+            ))}
           </nav>
         </>
       )}

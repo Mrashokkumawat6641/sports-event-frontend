@@ -35,7 +35,7 @@
     padding: 0.5rem 0;
 
     .userAvatar {
-        width: 48px;
+        width: 186px;
         height: 48px;
         border-radius: 12px;
         object-fit: cover;
@@ -56,9 +56,10 @@
 }
 
 .searchBox {
+    width: 12rem;
     display: flex;
     align-items: center;
-    background: #eceff1;
+    background: #e0e7ff;
     border-radius: 10px;
     padding: 0.5rem 0.8rem;
     margin-bottom: 2rem;
@@ -68,9 +69,22 @@
         border: none;
         background: transparent;
         outline: none;
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: #222;
         width: 100%;
+
+        &::placeholder {
+            color: #000;
+            opacity: 1;
+        }
+    }
+
+    // Increase the size of the search icon (assuming it's an svg or i element inside .searchBox)
+    svg,
+    i {
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
     }
 }
 

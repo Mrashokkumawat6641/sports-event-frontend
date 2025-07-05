@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const Gallery = () => {
+const GalleryImage = () => {
   return (
     <div style={{ padding: 32, textAlign: "center", fontSize: 32 }}>
       Admin Gallery Page
@@ -10,6 +10,5 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default GalleryImage;
 
-export {};
