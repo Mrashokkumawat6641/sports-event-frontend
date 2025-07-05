@@ -46,10 +46,10 @@ const AdminHeader = ({
       </div>
       <div className={styles.right}>
         <div className={styles.profile}>
-          <img
+          {/* <img
             src="https://res.cloudinary.com/dpxvet5ra/image/upload/v1751574062/jzkc3uf4muotujy79d4e.png"
             alt="Profile"
-          />
+          /> */}
           <div className={styles.profileInfo}>
             <div className={styles.profileName}>{name}</div>
             <div className={styles.profileEmail}>{email}</div>
