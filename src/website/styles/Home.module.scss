@@ -1,0 +1,275 @@
+.heroSection {
+    min-height: 80vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-left: calc(-1 * ((100vw - 100%) / 2));
+    margin-right: calc(-1 * ((100vw - 100%) / 2));
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: #06141f;
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 2rem 2rem 4rem;
+    max-width: 900px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.heroTitle {
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 24px #000a;
+}
+
+.accent {
+    color: #00e6e6;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    color: #e0e0e0;
+    text-shadow: 0 2px 8px #000a;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.ctaBtn {
+    background: #00e6e6;
+    color: #06141f;
+    padding: 0.9rem 2.2rem;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background: #fff;
+        color: #00e6e6;
+    }
+}
+
+.solutionsSection {
+    margin: 2.5rem 0rem 0rem 0rem;
+    padding: 2.5rem 3.2rem 2rem 26rem;
+    background: #06141f;
+    border-radius: 12px;
+    max-width: 1240px;
+    box-shadow: 0 2px 24px #000a;
+}
+
+.solutionsTitle {
+    font-size: 2.7rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.solutionsSubtitle {
+    color: #b0e0e6;
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 1.7rem;
+    text-align: left;
+}
+
+.chooseRole {
+    color: #00e6e6;
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.cardsGrid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-left: -14rem;
+    // justify-content: space-between;
+}
+
+.solutionCard {
+    background: #0b2236;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px #0006;
+    flex: 1 1 320px;
+    min-width: 300px;
+    max-width: 390px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid #1e3c72;
+    transition: box-shadow 0.2s, border 0.2s;
+
+    &:hover {
+        box-shadow: 0 4px 32px #00e6e6cc;
+        border: 1.5px solid #00e6e6;
+    }
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.7rem;
+    justify-content: center;
+}
+
+.cardLogo {
+    height: 28px;
+    width: 28px;
+    border-radius: 6px;
+    background: #fff;
+    object-fit: contain;
+}
+
+.cardProduct {
+    color: #00e6e6;
+    font-weight: 800;
+    font-size: 1.08rem;
+    letter-spacing: 0.5px;
+}
+
+.cardImage {
+    width: 100%;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    margin-bottom: 1.1rem;
+    opacity: 0.7;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+
+    &:hover {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+.cardTitle {
+    color: #fff;
+    font-size: 1.18rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.cardDesc {
+    color: #b0e0e6;
+    font-size: 1.01rem;
+    margin-bottom: 1.2rem;
+}
+
+.cardBtn {
+    background: #00e6e6;
+    color: #06141f;
+    padding: 0.6rem 1.3rem;
+    border-radius: 6px;
+    font-size: 1.01rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    &:hover {
+        background: #fff;
+        color: #00e6e6;
+    }
+}
+
+/* 🟩 Responsive Breakpoints */
+@media (max-width: 1000px) {
+    .heroSection {
+        width: 100vw;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .heroContent {
+        padding: 3rem 1rem;
+    }
+
+    .heroTitle {
+        font-size: 2.3rem;
+    }
+
+    .cardsGrid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .solutionCard {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .heroContent {
+        padding: 2rem 1rem;
+    }
+
+    .heroTitle {
+        font-size: 1.9rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    .ctaBtn {
+        font-size: 1rem;
+        padding: 0.6rem 1.4rem;
+    }
+
+    .solutionsTitle {
+        font-size: 2rem;
+    }
+
+    .solutionsSubtitle {
+        font-size: 1rem;
+    }
+
+    .cardTitle {
+        font-size: 1.05rem;
+    }
+
+    .cardDesc {
+        font-size: 0.96rem;
+    }
+
+    .cardBtn {
+        font-size: 0.95rem;
+    }
+}
