@@ -1,14 +1,14 @@
 /** @format */
 
 export interface LoginForm {
-  mobile: string;
-  password: string;
+  mobile: string | number;
+  password: string | number;
 }
 
 export interface RegisterForm {
   name: string;
   email: string;
-  mobile: string;
-  password: string;
-  confirmPassword: string;
+  mobile: string | number;
+  password: string | number;
+  confirmPassword: string | number;
 }
