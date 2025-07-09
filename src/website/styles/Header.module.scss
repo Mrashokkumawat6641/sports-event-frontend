@@ -452,6 +452,7 @@
         margin-bottom: 0;
         position: static;
         width: auto;
+        gap: 0.5rem;
     }
 
     .logo {
@@ -607,5 +608,46 @@
 @media (min-width: 769px) {
     .menuToggle {
         display: none !important;
+    }
+}
+
+/* --- CONSISTENT HEADER FOR ALL ENVIRONMENTS --- */
+@media (max-width: 1024px) {
+    .header {
+        height: 56px;
+        padding: 0 0.4rem;
+        align-items: center;
+    }
+    .left {
+        flex-direction: row;
+        align-items: center;
+        padding-left: 0.5rem;
+        margin-bottom: 0;
+        position: static;
+        width: auto;
+        gap: 0.5rem;
+    }
+    .logo {
+        height: 38px;
+        max-width: 60px;
+        min-width: 40px;
+        padding-left: 0;
+    }
+    .menuToggle {
+        position: static;
+        margin-left: 0.5rem;
+        margin-top: 0;
+        left: 0;
+        top: 0;
+        transform: none;
+        z-index: 101;
+        font-size: 1.5rem;
+        color: #00e6e6;
+        cursor: pointer;
+        height: 38px;
+        width: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
