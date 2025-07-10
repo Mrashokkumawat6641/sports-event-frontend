@@ -14,12 +14,11 @@ body,
     --collapsed-height: 60px;
     --expanded-height: 320px;
     --card-max-width: 1300px;
-    --card-width: 100vw;
+    --card-width: 100%;
     --speed: 0.6s;
     --easing: cubic-bezier(0.77, 0, 0.18, 1);
     background: #101217;
     min-height: 100vh;
-    width: 100vw;
     padding: 2.5rem 0 2rem 0;
     display: flex;
     flex-direction: column;
@@ -41,10 +40,10 @@ body,
         flex-direction: column;
         gap: var(--gap);
         list-style: none;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
-        width: 100vw;
-        max-width: 100vw;
+        width: 100%;
+        max-width: var(--card-max-width);
         background: none;
         box-sizing: border-box;
     }
@@ -64,8 +63,8 @@ body,
             box-shadow 0.4s,
             border-color 0.4s;
         height: var(--collapsed-height);
-        width: 100vw;
-        max-width: 100vw;
+        width: 100%;
+        max-width: 100%;
         cursor: pointer;
         z-index: 1;
         box-sizing: border-box;
@@ -183,6 +182,113 @@ body,
         }
     }
 
+    .gameSelectGrid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 2.5rem;
+    }
+
+    .gameSelectBox {
+        background: rgba(24, 28, 36, 0.5);
+        border: 2px solid #222b;
+        border-radius: 16px;
+        width: 200px;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        box-shadow: 0 4px 16px #000a;
+        position: relative;
+        padding: 1.5rem 1rem 1rem 1rem;
+        transition: border-color 0.3s;
+        overflow: hidden;
+
+        .gameImgBg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .gameImgOverlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 18, 23, 0.5);
+            border-radius: 16px;
+            z-index: 2;
+        }
+
+        input[type="radio"].roundRadio {
+            z-index: 3;
+            position: relative;
+        }
+
+        .gameLabel {
+            position: relative;
+            z-index: 3;
+            color: #ff5e5e;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.7rem;
+        }
+    }
+
+    .gameSelectBox input[type="radio"].roundRadio {
+        accent-color: #00e6e6;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        cursor: pointer;
+        display: inline-block;
+        transition: box-shadow 0.2s;
+        // box-shadow: 0 0 0 2px #101217;
+    }
+
+    @media (max-width: 700px) {
+        .gameSelectBox input[type="radio"].roundRadio {
+            width: 16px;
+            height: 16px;
+            margin-bottom: 7px;
+        }
+    }
+
+    .gameLabel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        gap: 0.7rem;
+    }
+
+    .gameImg {
+        width: 228px;
+        height: 212px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 2px 8px #000a;
+    }
+
+    .gameSelectBox input[type="radio"].roundRadio:checked+.gameLabel {
+        color: #00e6e6;
+    }
+
     @media (max-width: 600px) {
         ul {
             max-width: 100vw;
@@ -202,6 +308,28 @@ body,
         .vertical-title {
             font-size: 0.8rem;
             gap: 0.4rem;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .gameSelectGrid {
+            gap: 1rem;
+        }
+
+        .gameSelectBox {
+            width: 140px;
+            min-height: 140px;
+            padding: 0;
+        }
+
+        .gameImg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gameLabel {
+            margin-top: 60px;
+            font-size: 1rem;
         }
     }
 }

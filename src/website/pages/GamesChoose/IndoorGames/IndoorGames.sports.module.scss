@@ -1,0 +1,324 @@
+.indoor-games {
+    --gap: 16px;
+    --collapsed-height: 60px;
+    --expanded-height: 320px;
+    --card-max-width: 1300px;
+    --card-width: 100%;
+    --speed: 0.6s;
+    --easing: cubic-bezier(0.77, 0, 0.18, 1);
+    background: #101217;
+    min-height: 100vh;
+    padding: 2.5rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+
+    .title {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 2.2rem;
+        color: #fff;
+        letter-spacing: 0.04em;
+        font-weight: 700;
+        text-shadow: 0 2px 8px #000a;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        max-width: var(--card-max-width);
+        background: none;
+        box-sizing: border-box;
+    }
+
+    li {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        background: #181c24;
+        border: 1.2px solid #fff2;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px #000a;
+        transition:
+            height var(--speed) var(--easing),
+            box-shadow 0.4s,
+            border-color 0.4s;
+        height: var(--collapsed-height);
+        width: 100%;
+        max-width: 100%;
+        cursor: pointer;
+        z-index: 1;
+        box-sizing: border-box;
+
+        &[data-active="true"] {
+            height: var(--expanded-height);
+            box-shadow: 0 16px 48px #00e6e655;
+            border-color: #00e6e6;
+            z-index: 2;
+        }
+
+        .vertical-title {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            min-width: 60px;
+            height: 100%;
+            background: transparent;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            opacity: 0.85;
+            gap: 1.2rem;
+            transition: color 0.3s;
+            user-select: none;
+
+            svg {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                opacity: 0.7;
+            }
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            position: absolute;
+            inset: 0 0 0 60px;
+            padding: 2.2rem 2.2rem 2.2rem 2.8rem;
+            background: linear-gradient(90deg, #181c24ee 60%, #181c2400 100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+            color: #fff;
+            z-index: 3;
+
+            h3 {
+                margin: 0 0 1.1rem 0;
+                font-size: 1.5rem;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                line-height: 1.1;
+                text-shadow: 0 2px 8px #000a;
+            }
+
+            p {
+                font-size: 1.08rem;
+                opacity: 0.92;
+                margin-bottom: 1.2rem;
+                line-height: 1.5;
+            }
+
+            a {
+                text-decoration: none;
+                color: #00e6e6;
+                font-weight: 600;
+                font-size: 1.15rem;
+                margin-top: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+                background: none;
+                border: none;
+                outline: none;
+                cursor: pointer;
+
+                svg {
+                    font-size: 1.3rem;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &[data-active="true"] {
+            .card-content {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            img {
+                filter: grayscale(0);
+                transform: scale(1);
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s var(--easing);
+            filter: grayscale(1);
+            transform: scale(1.08);
+            border-radius: 14px;
+        }
+    }
+
+    .gameSelectGrid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 2.5rem;
+    }
+
+    .gameSelectBox {
+        background: rgba(24, 28, 36, 0.5);
+        border: 2px solid #222b;
+        border-radius: 16px;
+        width: 200px;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        box-shadow: 0 4px 16px #000a;
+        position: relative;
+        padding: 1.5rem 1rem 1rem 1rem;
+        transition: border-color 0.3s;
+        overflow: hidden;
+
+        .gameImgBg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .gameImgOverlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 18, 23, 0.5);
+            border-radius: 16px;
+            z-index: 2;
+        }
+
+        input[type="radio"].roundRadio {
+            z-index: 3;
+            position: relative;
+        }
+
+        .gameLabel {
+            position: relative;
+            z-index: 3;
+            color: #ff5e5e;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.7rem;
+        }
+    }
+
+    .gameSelectBox input[type="radio"].roundRadio {
+        accent-color: #00e6e6;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        cursor: pointer;
+        display: inline-block;
+        transition: box-shadow 0.2s;
+        // box-shadow: 0 0 0 2px #101217;
+    }
+
+    @media (max-width: 700px) {
+        .gameSelectBox input[type="radio"].roundRadio {
+            width: 16px;
+            height: 16px;
+            margin-bottom: 7px;
+        }
+    }
+
+    .gameLabel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        gap: 0.7rem;
+    }
+
+    .gameImg {
+        width: 228px;
+        height: 212px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 2px 8px #000a;
+    }
+
+    .gameSelectBox input[type="radio"].roundRadio:checked+.gameLabel {
+        color: #00e6e6;
+    }
+
+    @media (max-width: 600px) {
+        ul {
+            max-width: 100vw;
+            padding: 0 2vw;
+        }
+
+        li {
+            --collapsed-height: 38px;
+            --expanded-height: 120px;
+            border-radius: 7px;
+        }
+
+        .card-content {
+            padding: 0.6rem 0.6rem 0.6rem 0.8rem;
+        }
+
+        .vertical-title {
+            font-size: 0.8rem;
+            gap: 0.4rem;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .gameSelectGrid {
+            gap: 1rem;
+        }
+
+        .gameSelectBox {
+            width: 140px;
+            min-height: 140px;
+            padding: 0;
+        }
+
+        .gameImg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gameLabel {
+            margin-top: 60px;
+            font-size: 1rem;
+        }
+    }
+}

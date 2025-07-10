@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./OutdoorGames.sports.module.scss";
 import {
   FaFutbol,
@@ -12,6 +12,7 @@ import {
   FaBullseye,
   FaRunning,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const outdoorGames = [
   {
@@ -81,12 +82,40 @@ const outdoorGames = [
     description: "Enjoy fast-paced fun and teamwork with flying discs.",
     image:
       "https://greatershepparton.com.au/images/assets/files/images/news/2022/10/DSC_2105_-_Photo_Credit_Mark_Milne_6~2000_auto_-1_80_f21e.jpg",
-    icon: <FaCompactDisc />, 
+    icon: <FaCompactDisc />,
   },
 ];
 
 const OutdoorGamesSection = () => {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [selectedGameIdx, setSelectedGameIdx] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const list = document.querySelector("." + styles["indoor-games"] + " ul");
+    const items = list?.querySelectorAll("li");
+
+    const setIndex = (event: Event) => {
+      const target = event.target as HTMLElement;
+      const closest = target.closest("li");
+      if (!closest || !list || !items) return;
+      const index = Array.from(items).indexOf(closest);
+
+      const cols = Array.from(items).map((_, i) => {
+        (items[i] as HTMLElement).dataset.active = (i === index).toString();
+        return i === index ? "10fr" : "1fr";
+      });
+      (list as HTMLElement).style.gridTemplateColumns = cols.join(" ");
+    };
+
+    list?.addEventListener("pointermove", setIndex);
+    list?.addEventListener("click", setIndex);
+
+    return () => {
+      list?.removeEventListener("pointermove", setIndex);
+      list?.removeEventListener("click", setIndex);
+    };
+  }, []);
 
   return (
     <section className={styles["outdoor-games"]}>
@@ -116,6 +145,62 @@ const OutdoorGamesSection = () => {
           </li>
         ))}
       </ul>
+      <div className={styles.gameSelectGrid}>
+        {outdoorGames.map((game, idx) => (
+          <div
+            key={idx}
+            className={styles.gameSelectBox}
+            style={{ position: "relative", cursor: "pointer" }}
+            onClick={() => {
+              if (game.title === "Cricket") {
+                navigate("/outdoor-games/Cricket");
+              } else if (game.title === "Football") {
+                navigate("/outdoor-games/Football");
+              } else if (game.title === "Basketball") {
+                navigate("/outdoor-games/Basketball");
+              } else if (game.title === "Kabaddi") {
+                navigate("/outdoor-games/Kabaddi-sports");
+              } else if (game.title === "Volleyball") {
+                navigate("/outdoor-games/VolleyBall-sports");
+              } else if (game.title === "Athletics") {
+                navigate("/outdoor-games/Athletics-sports");
+              } else {
+                setSelectedGameIdx(idx);
+              }
+            }}
+          >
+            <img
+              src={game.image}
+              alt={game.title}
+              className={styles.gameImgBg}
+            />
+            <div className={styles.gameImgOverlay}></div>
+            <input
+              type="radio"
+              id={`select-game-${idx}`}
+              name="indoorGame"
+              className={styles.roundRadio}
+              checked={selectedGameIdx === idx}
+              onChange={() => setSelectedGameIdx(idx)}
+              style={{
+                width: 22,
+                height: 22,
+                accentColor: "#00e6e6",
+                borderRadius: "50%",
+                position: "absolute",
+                top: 14,
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 3,
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+            <label htmlFor={`select-game-${idx}`} className={styles.gameLabel}>
+              <span>{game.title}</span>
+            </label>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
