@@ -51,6 +51,9 @@ const Header = () => {
           <a href="/Header/SportsEventContactUs" className={styles.navLink}>
             Contact Us
           </a>
+          <a href="/Header/SportsEventContactUs" className={styles.navLink}>
+            Trofee
+          </a>
           <a href="/Header/TermsAndConditions" className={styles.navLink}>
             Terms & Conditon
           </a>
