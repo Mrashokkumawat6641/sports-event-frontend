@@ -93,8 +93,8 @@ const Footer = () => (
           <div className={styles.linkTitle}>Company</div>
           <a href="#">Careers</a>
           <a href="#">Blog</a>
-          <a href="#">Advertise</a>
-          <a href="#">Brand book</a>
+          <a href="/footer/CancellationAndRefund">Cancellation And Refund</a>
+          <a href="/footer/ShippingAndDelivery">ShippingAndDelivery</a>
           <a href="#">About us</a>
           <a href="#">Contact</a>
         </div>
@@ -103,8 +103,9 @@ const Footer = () => (
     <div className={styles.footerBottom}>
       <div className={styles.copyright}>
         © {new Date().getFullYear()} Sports Dev Ltd. &nbsp;{" "}
-        <a href="#">Terms</a> &nbsp; | &nbsp; <a href="#">Privacy</a> &nbsp; |{" "}
-        &nbsp; <a href="#">Guidelines</a>
+        <a href="/Header/TermsAndConditions">Terms</a> &nbsp; | &nbsp;{" "}
+        <a href="/footer/PrivacyPolicy">Privacy Policy</a> &nbsp; | &nbsp;{" "}
+        <a href="#">Guidelines</a>
       </div>
       <div className={styles.flagsRow}>
         <img

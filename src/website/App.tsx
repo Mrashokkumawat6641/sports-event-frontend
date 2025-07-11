@@ -1,4 +1,9 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
+/**
+ * eslint-disable react/jsx-no-comment-textnodes
+ *
+ * @format
+ */
+
 /** @format */
 
 import React from "react";
@@ -29,6 +34,14 @@ import { TermsAndConditions } from "./components/Header/Terms & Conditon/Terms&C
 import { SportsLocation } from "./components/Header/Location/Location.sports";
 import { ContactUs } from "./components/Header/ContactUs/ContactUs.sports";
 import { AboutUs } from "./components/Header/AboutUs/AboutUs.sports";
+import GameChooseForRegistratiionSports from "./pages/selectGameForRegistration/selectGameForRegistration.sports";
+import FillGameDetails from "./pages/FillGameDetails/FillGameDetails.sports";
+import PlayerRegistration from "./pages/PlayerRegistration/PlayerRegistration.sports";
+import FeesPayment from "./pages/ProcessPaymentMethod/ProcessPaymentMethod.sports";
+import RegistrationComplete from "./pages/RegistrationComplete/RegistrationComplete.sports";
+import ShippingAndDelivery from "./components/Footer/ShippingAndDelivery/ShippingAndDelivery.Footer.sports";
+import PrivacyPolicy from "./components/Footer/Privacy and Policy/PrivacyPolicy.Footer.sports";
+import CancellationAndRefund from "./components/Footer/CancellationAndRefund/CancellationAndRefund.Footer.sports";
 
 const App = () => (
   <AuthProvider>
@@ -40,13 +53,38 @@ const App = () => (
         <Route path="/register" element={<Register />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/admin/*" element={<AdminRoutes />} />
-
         //header routes here
-        <Route path="/Header/TermsAndConditions" element={<TermsAndConditions />} />
-        <Route path="/Header/SportsEventLocation" element={<SportsLocation />} />
+        <Route
+          path="/Header/TermsAndConditions"
+          element={<TermsAndConditions />}
+        />
+        <Route
+          path="/Header/SportsEventLocation"
+          element={<SportsLocation />}
+        />
         <Route path="/Header/SportsEventContactUs" element={<ContactUs />} />
         <Route path="/Header/SportsEventAboutUs" element={<AboutUs />} />
-
+        //registration routes here
+        <Route
+          path="/registration/ChooseGame_registration"
+          element={<GameChooseForRegistratiionSports />}
+        />
+        <Route
+          path="/registration/ChooseSportsDetailsregistration"
+          element={<FillGameDetails />}
+        />
+        <Route
+          path="/registration/PlayerRegistrationDetails"
+          element={<PlayerRegistration />}
+        />
+        <Route
+          path="/registration/PlayerRegistrationFees"
+          element={<FeesPayment />}
+        />
+        <Route
+          path="/registration/RegistrationComplete"
+          element={<RegistrationComplete />}
+        />
         <Route path="/choose-game" element={<GameChooseSports />} />
         <Route path="/choose-Outdoor-game" element={<OutdoorGamesSection />} />
         <Route path="/indoor-games" element={<IndoorGamesSection />} />
@@ -68,6 +106,26 @@ const App = () => (
           path="/outdoor-games/VolleyBall-sports"
           element={<VolleyballGame />}
         />
+        <Route
+          path="/outdoor-games/Athletics-sports"
+          element={<AthleticsGame />}
+        />
+        //Footer paths
+        <Route
+          path="/footer/TermsAndConditions"
+          element={<TermsAndConditions />}
+        />
+        <Route
+          path="/footer/SportsEventLocation"
+          element={<SportsLocation />}
+        />
+        <Route path="/footer/SportsEventContactUs" element={<ContactUs />} />
+        <Route
+          path="/footer/ShippingAndDelivery"
+          element={<ShippingAndDelivery />}
+        />
+        <Route path="/footer/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/footer/CancellationAndRefund" element={<CancellationAndRefund />} />
         <Route
           path="/outdoor-games/Athletics-sports"
           element={<AthleticsGame />}

@@ -60,7 +60,7 @@ const Registration = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // handle next step
-    navigate("/choose-game");
+    navigate("/registration/ChooseGame_registration");
   };
 
   return (
@@ -71,7 +71,7 @@ const Registration = () => {
         <div className={styles.row}>
           <div className={styles.fieldGroup}>
             <label htmlFor="coachName">
-              Koach Name<span>*</span>
+              Coach Name<span>*</span>
             </label>
             <input
               type="text"
@@ -98,7 +98,7 @@ const Registration = () => {
         <div className={styles.row}>
           <div className={styles.fieldGroup}>
             <label htmlFor="photo">
-              Koach Photo<span>*</span>
+              Coach Photo<span>*</span>
             </label>
             <input
               type="file"
