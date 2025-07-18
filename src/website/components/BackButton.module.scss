@@ -1,0 +1,21 @@
+.backBtn {
+    position: absolute;
+    top: 18px;
+    left: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    transition: transform 0.15s;
+
+    @media (max-width: 547px) and (min-width: 200px) {
+        top: 12px;
+        left: 12px;
+        padding: 6px 0px;
+    }
+}
+
+.backBtn:hover {
+    transform: scale(1.08);
+}

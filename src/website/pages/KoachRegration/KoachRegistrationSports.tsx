@@ -1,26 +1,32 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
+import { useRegistration } from "../../context/registration/RegistrationContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Registration.module.scss";
-import { uploadImage } from "../../service/registraionSports.service";
+import {
+  uploadImage,
+  registerCoach,
+} from "../../service/koachRegistration.service";
 
 const Registration = () => {
+  const { setData, data } = useRegistration();
   const [form, setForm] = useState({
-    coachName: "",
-    middleName: "",
-    photo: null as File | null,
-    age: "",
-    gender: "",
-    city: "",
-    state: "",
-    mobile: "",
-    altMobile: "",
+    coachName: data?.koach?.coachName || "",
+    middleName: data?.koach?.middleName || "",
+    photo: data?.koach?.photo || null,
+    age: data?.koach?.age || "",
+    gender: data?.koach?.gender || "",
+    city: data?.koach?.city || "",
+    state: data?.koach?.state || "",
+    mobile: data?.koach?.mobile || "",
+    altMobile: data?.koach?.altMobile || "",
   });
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
   const [dotCount, setDotCount] = useState(1);
+  const [apiError, setApiError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,9 +63,14 @@ const Registration = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // handle next step
+    setApiError(null);
+    let payload = { ...form };
+    if (uploadedUrl) {
+      payload.photo = uploadedUrl as any;
+    }
+    setData({ koach: payload });
     navigate("/registration/ChooseGame_registration");
   };
 
@@ -220,6 +231,11 @@ const Registration = () => {
         <button className={styles.nextBtn} type="submit">
           Next
         </button>
+        {apiError && (
+          <div style={{ color: "red", marginTop: 8, fontWeight: 500 }}>
+            {apiError}
+          </div>
+        )}
       </form>
     </div>
   );

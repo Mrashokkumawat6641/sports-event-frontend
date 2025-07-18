@@ -1,6 +1,8 @@
 /** @format */
 
 import React, { useState } from "react";
+import BackButton from "../../components/BackButton";
+import { useRegistration } from "../../context/registration/RegistrationContext";
 import styles from "./FillGameDetails.sports.module.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -23,25 +25,26 @@ const OUTDOOR_GAMES = [
 const FillGameDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const selectedGameType = location.state?.selectedGameType as
-    | "indoor"
-    | "outdoor"
-    | null;
+  const { setData, data } = useRegistration();
+  const selectedGameType = (data?.game?.selectedGameType ||
+    location.state?.selectedGameType) as "indoor" | "outdoor" | null;
 
-  const [selectedGame, setSelectedGame] = useState("");
+  const [selectedGame, setSelectedGame] = useState(
+    data?.details?.selectedGame || ""
+  );
 
   const gameList = selectedGameType === "indoor" ? INDOOR_GAMES : OUTDOOR_GAMES;
 
   const handleNext = () => {
     if (selectedGame) {
-      navigate("/registration/PlayerRegistrationDetails", {
-        state: { selectedGameType, selectedGame },
-      });
+      setData({ details: { selectedGameType, selectedGame } });
+      navigate("/registration/PlayerRegistrationDetails");
     }
   };
 
   return (
-    <div className={styles.fillGameWrapper}>
+    <div className={styles.fillGameWrapper} style={{ position: "relative" }}>
+      <BackButton to="/registration/ChooseGame_registration" />
       <h2 className={styles.heading}>
         Choose <span>Sports</span> Name
       </h2>
