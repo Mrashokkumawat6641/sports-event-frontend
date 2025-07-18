@@ -58,9 +58,16 @@
     img {
         width: 100%;
         max-width: 600px;
-        border-radius: 10px;
         height: 17rem;
         margin: 1rem 5px;
+        border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    img:hover {
+        transform: scale(1.2);
+        z-index: 2;
     }
 }

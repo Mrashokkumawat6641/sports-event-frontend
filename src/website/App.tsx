@@ -42,97 +42,113 @@ import RegistrationComplete from "./pages/RegistrationComplete/RegistrationCompl
 import ShippingAndDelivery from "./components/Footer/ShippingAndDelivery/ShippingAndDelivery.Footer.sports";
 import PrivacyPolicy from "./components/Footer/Privacy and Policy/PrivacyPolicy.Footer.sports";
 import CancellationAndRefund from "./components/Footer/CancellationAndRefund/CancellationAndRefund.Footer.sports";
+import { RegistrationProvider } from "./context/registration/RegistrationContext";
+import Trofee from "./components/Header/Trofee/Trofee.sports";
 
 const App = () => (
   <AuthProvider>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/admin/*" element={<AdminRoutes />} />
-        //header routes here
-        <Route
-          path="/Header/TermsAndConditions"
-          element={<TermsAndConditions />}
-        />
-        <Route
-          path="/Header/SportsEventLocation"
-          element={<SportsLocation />}
-        />
-        <Route path="/Header/SportsEventContactUs" element={<ContactUs />} />
-        <Route path="/Header/SportsEventAboutUs" element={<AboutUs />} />
-        //registration routes here
-        <Route
-          path="/registration/ChooseGame_registration"
-          element={<GameChooseForRegistratiionSports />}
-        />
-        <Route
-          path="/registration/ChooseSportsDetailsregistration"
-          element={<FillGameDetails />}
-        />
-        <Route
-          path="/registration/PlayerRegistrationDetails"
-          element={<PlayerRegistration />}
-        />
-        <Route
-          path="/registration/PlayerRegistrationFees"
-          element={<FeesPayment />}
-        />
-        <Route
-          path="/registration/RegistrationComplete"
-          element={<RegistrationComplete />}
-        />
-        <Route path="/choose-game" element={<GameChooseSports />} />
-        <Route path="/choose-Outdoor-game" element={<OutdoorGamesSection />} />
-        <Route path="/indoor-games" element={<IndoorGamesSection />} />
-        <Route
-          path="/indoor-games/table-tennis"
-          element={<TableTennisPage />}
-        />
-        <Route path="/indoor-games/chess" element={<ChessPage />} />
-        <Route path="/indoor-games/Badminton" element={<BadmintonPage />} />
-        <Route path="/indoor-games/Carrom" element={<CarromPage />} />
-        <Route path="/indoor-games/wrestling" element={<WrestlingPage />} />
-        <Route path="/outdoor-games" element={<OutdoorGamesSection />} />
-        <Route path="/outdoor-games/Cricket" element={<CricketGame />} />
-        <Route path="/outdoor-games/Football" element={<FootballGame />} />
-        <Route path="/outdoor-games/Cricket" element={<CricketGame />} />
-        <Route path="/outdoor-games/Basketball" element={<BasketballGame />} />
-        <Route path="/outdoor-games/Kabaddi-sports" element={<KabaddiGame />} />
-        <Route
-          path="/outdoor-games/VolleyBall-sports"
-          element={<VolleyballGame />}
-        />
-        <Route
-          path="/outdoor-games/Athletics-sports"
-          element={<AthleticsGame />}
-        />
-        //Footer paths
-        <Route
-          path="/footer/TermsAndConditions"
-          element={<TermsAndConditions />}
-        />
-        <Route
-          path="/footer/SportsEventLocation"
-          element={<SportsLocation />}
-        />
-        <Route path="/footer/SportsEventContactUs" element={<ContactUs />} />
-        <Route
-          path="/footer/ShippingAndDelivery"
-          element={<ShippingAndDelivery />}
-        />
-        <Route path="/footer/PrivacyPolicy" element={<PrivacyPolicy />} />
-        <Route path="/footer/CancellationAndRefund" element={<CancellationAndRefund />} />
-        <Route
-          path="/outdoor-games/Athletics-sports"
-          element={<AthleticsGame />}
-        />
-      </Routes>
-      <Footer />
-    </Router>
+    <RegistrationProvider>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/admin/*" element={<AdminRoutes />} />
+          {/* header routes here */}
+          <Route
+            path="/Header/TermsAndConditions"
+            element={<TermsAndConditions />}
+          />
+          <Route path="/Header/Trofee" element={<Trofee />} />
+          <Route
+            path="/Header/SportsEventLocation"
+            element={<SportsLocation />}
+          />
+          <Route path="/Header/SportsEventContactUs" element={<ContactUs />} />
+          <Route path="/Header/SportsEventAboutUs" element={<AboutUs />} />
+          {/* registration routes here */}
+          <Route
+            path="/registration/ChooseGame_registration"
+            element={<GameChooseForRegistratiionSports />}
+          />
+          <Route
+            path="/registration/ChooseSportsDetailsregistration"
+            element={<FillGameDetails />}
+          />
+          <Route
+            path="/registration/PlayerRegistrationDetails"
+            element={<PlayerRegistration />}
+          />
+          <Route
+            path="/registration/PlayerRegistrationFees"
+            element={<FeesPayment />}
+          />
+          <Route
+            path="/registration/RegistrationComplete"
+            element={<RegistrationComplete />}
+          />
+          <Route path="/choose-game" element={<GameChooseSports />} />
+          <Route
+            path="/choose-Outdoor-game"
+            element={<OutdoorGamesSection />}
+          />
+          <Route path="/indoor-games" element={<IndoorGamesSection />} />
+          <Route
+            path="/indoor-games/table-tennis"
+            element={<TableTennisPage />}
+          />
+          <Route path="/indoor-games/chess" element={<ChessPage />} />
+          <Route path="/indoor-games/Badminton" element={<BadmintonPage />} />
+          <Route path="/indoor-games/Carrom" element={<CarromPage />} />
+          <Route path="/indoor-games/wrestling" element={<WrestlingPage />} />
+          <Route path="/outdoor-games" element={<OutdoorGamesSection />} />
+          <Route path="/outdoor-games/Cricket" element={<CricketGame />} />
+          <Route path="/outdoor-games/Football" element={<FootballGame />} />
+          <Route
+            path="/outdoor-games/Basketball"
+            element={<BasketballGame />}
+          />
+          <Route
+            path="/outdoor-games/Kabaddi-sports"
+            element={<KabaddiGame />}
+          />
+          <Route
+            path="/outdoor-games/VolleyBall-sports"
+            element={<VolleyballGame />}
+          />
+          <Route
+            path="/outdoor-games/Athletics-sports"
+            element={<AthleticsGame />}
+          />
+          {/* Footer paths */}
+          <Route
+            path="/footer/TermsAndConditions"
+            element={<TermsAndConditions />}
+          />
+          <Route
+            path="/footer/SportsEventLocation"
+            element={<SportsLocation />}
+          />
+          <Route path="/footer/SportsEventContactUs" element={<ContactUs />} />
+          <Route
+            path="/footer/shipping-delivery"
+            element={<ShippingAndDelivery />}
+          />
+          <Route path="/footer/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route
+            path="/footer/CancellationAndRefund"
+            element={<CancellationAndRefund />}
+          />
+          <Route
+            path="/outdoor-games/Athletics-sports"
+            element={<AthleticsGame />}
+          />
+        </Routes>
+        <Footer />
+      </Router>
+    </RegistrationProvider>
   </AuthProvider>
 );
 

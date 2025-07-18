@@ -6,7 +6,9 @@ export const SportsLocation = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Our Location</h1>
-      <h1 className={styles.heading}>Sports Event Location</h1>
+      <h1 className={styles.heading}>
+        Sports <span style={{ color: "white" }}>Event</span> Location
+      </h1>
       <div className={styles.content}>
         <div className={styles.map}>
           <iframe
